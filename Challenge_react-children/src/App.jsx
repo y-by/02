@@ -43,6 +43,8 @@ function App() {
       <Callout>
               <img src="https://picsum.photos/id/102/4320/3240" width="100%"/>
               <figcaption>Just look at those sparkling raspberries!</figcaption>
+              <p>This is probably the best site you've ever come across. I'm glad you're here to witness the magnificence of this website right now.</p>
+
       </Callout>
       
       
