@@ -1,33 +1,21 @@
-import React, {Component} from "react"
+import React from "react"
+import {withToggler} from "./HOCs/withToggler"
 
-class Favorite extends Component {
-    state = {
-        isFavorited: false
-    }
-    
-    toggleFavorite = () => {
-        this.setState(prevState => {
-            return {
-                isFavorited: !prevState.isFavorited
-            }
-        })
-    }
-    
-    render() {
-        return (
-            <div>
-                <h3>Click heart to favorite</h3>
-                <h1>
-                    <span 
-                        className="point"
-                        onClick={this.toggleFavorite}
-                    >
-                        {this.state.isFavorited ? "❤️" : "♡"}
-                    </span>
-                </h1>
-            </div>
-        ) 
-    }
+function Favorite(props) {
+      return (
+          <div>
+              <h3>Click heart to favorite</h3>
+              <h1>
+                  <span 
+                      className="point"
+                      onClick={props.toggle}
+                  >
+                      {props.on ? "❤️" : "♡"}
+                  </span>
+              </h1>
+          </div>
+      ) 
 }
 
-export default Favorite
+const SuperchargeFavoriteComponent = withToggler(Favorite)
+export default SuperchargeFavoriteComponent

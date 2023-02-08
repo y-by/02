@@ -1,23 +1,11 @@
-import React, {Component} from "react"
+import React from "react"
+import {withToggler} from "./HOCs/withToggler"
 
-class Menu extends Component {
-    state = {
-        show: false
-    }
-    
-    toggleShow = () => {
-        this.setState(prevState => {
-            return {
-                show: !prevState.show
-            }
-        })
-    }
-    
-    render() {
+function Menu(props) {
         return (
             <div>
-                <button className="point" onClick={this.toggleShow}>{this.state.show ? "Hide" : "Show"} Menu </button>
-                <nav style={{display: this.state.show ? "block" : "none"}}>
+                <button className="point" onClick={props.toggle}>{props.on ? "Hide" : "Show"} Menu </button>
+                <nav style={{display: props.on ? "block" : "none"}}>
                     <h6>Signed in as Coder123</h6>
                     <a>Your Profile</a>
                     <a>Your Repositories</a>
@@ -26,7 +14,7 @@ class Menu extends Component {
                 </nav>
             </div>
         ) 
-    }
 }
 
-export default Menu
+const SuperchargeMenuComponent = withToggler(Menu)
+export default SuperchargeMenuComponent
