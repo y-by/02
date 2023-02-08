@@ -16,5 +16,5 @@ function Menu(props) {
         ) 
 }
 
-const SuperchargeMenuComponent = withToggler(Menu)
+const SuperchargeMenuComponent = withToggler(Menu, {defaultOnValue: true})
 export default SuperchargeMenuComponent
