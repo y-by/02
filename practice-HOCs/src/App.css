@@ -7,7 +7,9 @@
 
 .App {
   width: 33vw;
+  padding: 1rem;
   box-shadow: 2px 2px 2px 2px #1f1f1f81;
+  border-radius: .5rem;
 }
 
 .App:hover {
