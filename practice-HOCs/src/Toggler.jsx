@@ -34,4 +34,3 @@ Toggler.defaultProps ={
 }
 
 export default Toggler
-
