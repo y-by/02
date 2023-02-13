@@ -14,12 +14,17 @@ class Toggler extends Component {
   }
 
   render() {
+    console.log(this.state.on)
     return (
       <div>
         {this.props.render(this.state.on, this.toggle)}
       </div>
     )
   }
+}
+
+Toggler.defaultProps ={
+  defaultOnValue: false
 }
 
 export default Toggler

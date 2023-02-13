@@ -3,7 +3,7 @@ import Toggler from "./Toggler"
 
 function Favorite(props) {
       return (
-        <Toggler render={
+        <Toggler defaultOnValue={false} render={
             (on, toggle) => (
           <div>
               <h3>Click heart to favorite</h3>
