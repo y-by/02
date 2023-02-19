@@ -18,6 +18,7 @@ function App() {
         <List />
         <List />
       </main>
+      <button href="#" className='msg-btn'>💬</button>
     </div>
   )
 }
