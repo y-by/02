@@ -13,6 +13,10 @@ function App() {
       <main>
         <Hero />
         <List />
+        <List />
+        <List />
+        <List />
+        <List />
       </main>
     </div>
   )
