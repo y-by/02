@@ -2,23 +2,25 @@ Header {
   background-color: #282828;
   color: whitesmoke;
 }
+main {
+  max-width: 880px;
+  margin: 0 auto;
+}
 h1 {
   font-size: 40px;
   font-weight: 600;
 }
-p {
-
-}
 ul {
-  margin: 0;
+  margin: 0 auto;
   padding: 25px;
   list-style: none;
+  max-width: 880px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-a{
+a {
   color: inherit;
   text-decoration: none;
 }
@@ -41,6 +43,7 @@ section {
 }
 .item {
   position: relative;
+  
 }
 .caption {
   display: flex;
@@ -62,4 +65,14 @@ section {
   color: whitesmoke;
   font-weight: 900;
   font-size: 1.2em;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+}
+@media (min-width: 720px) {
+  .list {
+    flex-direction: row;
+    gap: 1rem;
+  }
 }
