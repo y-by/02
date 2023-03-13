@@ -9,18 +9,26 @@ function App() {
       const {value} = e.target
       setText(value)
   }
-  
   console.log(text)
+  
+  function calcWordCount(text) {
+    console.log(text)
+    const textarea = document.getElementById('myTextarea');
+    const words = textarea.value.trim().split(/\s+/);
+    const numWords = words.length;
+    console.log('Number of words: ' + numWords);
+  }
   
   return (
       <div>
           <h1>How fast do you type?</h1>
           <textarea
+              id='myTextarea'
               onChange={handleChange}
               value={text}
           />
           <h4>Time remaining: ???</h4>
-          <button>Start</button>
+          <button onClick={calcWordCount}>Start</button>
           <h1>Word count: ???</h1>
       </div>
   )
