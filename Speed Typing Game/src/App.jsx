@@ -11,12 +11,13 @@ function App() {
   }
   console.log(text)
   
-  function calcWordCount(text) {
-    console.log(text)
+  function calcWordCount() {
     const textarea = document.getElementById('myTextarea');
-    const words = textarea.value.trim().split(/\s+/);
-    const numWords = words.length;
-    console.log('Number of words: ' + numWords);
+    const words = textarea.value.split(' ').length;
+    console.log(
+      `Number of words: ${words} 
+The words are: ${textarea.value}`
+    );
   }
   
   return (
