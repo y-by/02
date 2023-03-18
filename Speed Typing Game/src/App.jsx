@@ -13,9 +13,12 @@ function App() {
   
   function calcWordCount() {
     const textarea = document.getElementById('myTextarea');
-    const words = textarea.value.split(' ').length;
+    const words = textarea.value.trim().split(' ');
+    // get 1 on empty input
+    const filteredWords = words.filter(word => word !== "")
+    const numberOfWords = filteredWords.length
     console.log(
-      `Number of words: ${words} 
+      `Number of words: ${numberOfWords}
 The words are: ${textarea.value}`
     );
   }
