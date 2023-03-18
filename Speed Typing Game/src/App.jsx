@@ -1,27 +1,29 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 
 function App() {
   const [text, setText] = useState("")
+  const [timeRemaining, setTimeRemaining] = useState(10)
   
   function handleChange(e) {
       const {value} = e.target
       setText(value)
   }
-  console.log(text)
+  // console.log(text)
   
-  function calcWordCount() {
-    const textarea = document.getElementById('myTextarea');
-    const words = textarea.value.trim().split(' ');
-    // get 1 on empty input
-    const filteredWords = words.filter(word => word !== "")
-    const numberOfWords = filteredWords.length
-    console.log(
-      `Number of words: ${numberOfWords}
-The words are: ${textarea.value}`
-    );
+  function calcWordCount(text) {
+    const wordsArr = text.trim().split(" ")
+    return wordsArr.filter(word => word !== "").length
   }
+
+  useEffect(() => {
+    if(timeRemaining > 0) {
+      setTimeout(() => {
+        setTimeRemaining(time => time - 1)
+      }, 1000)
+    }
+  }, [timeRemaining])
   
   return (
       <div>
@@ -31,8 +33,8 @@ The words are: ${textarea.value}`
               onChange={handleChange}
               value={text}
           />
-          <h4>Time remaining: ???</h4>
-          <button onClick={calcWordCount}>Start</button>
+          <h4>Time remaining: {timeRemaining}</h4>
+          <button onClick={() => console.log(calcWordCount(text))}>Start</button>
           <h1>Word count: ???</h1>
       </div>
   )
