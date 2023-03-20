@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css'
-
 
 function App() {
   const [text, setText] = useState("")
-  const [timeRemaining, setTimeRemaining] = useState(10)
+  const [timeRemaining, setTimeRemaining] = useState(2)
+  const [isTimeRuning, setIsTimeRuning] = useState(false)
   
   function handleChange(e) {
       const {value} = e.target
@@ -18,12 +18,16 @@ function App() {
   }
 
   useEffect(() => {
-    if(timeRemaining > 0) {
+    if(isTimeRuning && timeRemaining > 0) {
       setTimeout(() => {
         setTimeRemaining(time => time - 1)
+        console.log(isTimeRuning)
       }, 1000)
+    } else {
+      setIsTimeRuning(false)
+      console.log(isTimeRuning)
     }
-  }, [timeRemaining])
+  }, [timeRemaining, isTimeRuning])
   
   return (
       <div>
@@ -34,8 +38,8 @@ function App() {
               value={text}
           />
           <h4>Time remaining: {timeRemaining}</h4>
-          <button onClick={() => console.log(calcWordCount(text))}>Start</button>
-          <h1>Word count: ???</h1>
+          <button onClick={() => setIsTimeRuning(true)}>Start</button>
+          <h1>Word count: {calcWordCount(text)}</h1>
       </div>
   )
 }
