@@ -5,6 +5,7 @@ function App() {
   const [text, setText] = useState("")
   const [timeRemaining, setTimeRemaining] = useState(2)
   const [isTimeRuning, setIsTimeRuning] = useState(false)
+  const [wordCount, setWordCount] = useState(0)
   
   function handleChange(e) {
       const {value} = e.target
@@ -21,11 +22,10 @@ function App() {
     if(isTimeRuning && timeRemaining > 0) {
       setTimeout(() => {
         setTimeRemaining(time => time - 1)
-        console.log(isTimeRuning)
       }, 1000)
     } else {
       setIsTimeRuning(false)
-      console.log(isTimeRuning)
+      setWordCount(calcWordCount(text))
     }
   }, [timeRemaining, isTimeRuning])
   
@@ -39,7 +39,7 @@ function App() {
           />
           <h4>Time remaining: {timeRemaining}</h4>
           <button onClick={() => setIsTimeRuning(true)}>Start</button>
-          <h1>Word count: {calcWordCount(text)}</h1>
+          <h1>Word count: {wordCount}</h1>
       </div>
   )
 }
