@@ -48,7 +48,7 @@ function App() {
   }, [timeRemaining, isTimeRuning])
   
   return (
-      <div>
+      <div className='app'>
           <h1>How fast do you type?</h1>
           <textarea
               ref={textareaRef}
