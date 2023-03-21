@@ -7,3 +7,12 @@ button:hover {
 button:active {
   background-color: #61b661;
 }
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+textarea:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}

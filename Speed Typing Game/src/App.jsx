@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 function App() {
+  const STARTING_TIME = 10
+
   const [text, setText] = useState("")
-  const [timeRemaining, setTimeRemaining] = useState(2)
+  const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME)
   const [isTimeRuning, setIsTimeRuning] = useState(false)
   const [wordCount, setWordCount] = useState(0)
+    
+  const textareaRef = useRef(null);
   
   function handleChange(e) {
       const {value} = e.target
@@ -18,14 +22,27 @@ function App() {
     return wordsArr.filter(word => word !== "").length
   }
 
+  function startGame() {
+    textareaRef.current.focus()
+
+    setIsTimeRuning(true)
+    setTimeRemaining(STARTING_TIME)
+    setWordCount(0)
+    setText("")
+  }
+
+  function endGame() {
+    setIsTimeRuning(false)
+    setWordCount(calcWordCount(text))
+  }
+
   useEffect(() => {
     if(isTimeRuning && timeRemaining > 0) {
       setTimeout(() => {
         setTimeRemaining(time => time - 1)
       }, 1000)
     } else {
-      setIsTimeRuning(false)
-      setWordCount(calcWordCount(text))
+      endGame()
     }
   }, [timeRemaining, isTimeRuning])
   
@@ -33,12 +50,16 @@ function App() {
       <div>
           <h1>How fast do you type?</h1>
           <textarea
-              id='myTextarea'
+              ref={textareaRef}
+              disabled={!isTimeRuning}
               onChange={handleChange}
               value={text}
           />
           <h4>Time remaining: {timeRemaining}</h4>
-          <button onClick={() => setIsTimeRuning(true)}>Start</button>
+          <button 
+            disabled={isTimeRuning}
+            onClick={startGame}
+          >Start</button>
           <h1>Word count: {wordCount}</h1>
       </div>
   )
