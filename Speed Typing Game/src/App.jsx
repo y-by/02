@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 function App() {
-  const STARTING_TIME = 10
+  const STARTING_TIME = 5
 
   const [text, setText] = useState("")
   const [timeRemaining, setTimeRemaining] = useState(STARTING_TIME)
@@ -23,12 +23,13 @@ function App() {
   }
 
   function startGame() {
-    textareaRef.current.focus()
-
+    
     setIsTimeRuning(true)
     setTimeRemaining(STARTING_TIME)
     setWordCount(0)
     setText("")
+    textareaRef.current.disabled = false
+    textareaRef.current.focus()
   }
 
   function endGame() {
